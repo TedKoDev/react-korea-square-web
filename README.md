@@ -21,3 +21,15 @@ npm install firebase
 
 npm install react-transition-group //스무스하게 움직이게
 npm install --save @types/react-transition-group
+
+npm install axios
+
+npm install @tanstack/react-query
+
+### 토큰 쉽게분해하기 https://www.npmjs.com/package/jwt-decode
+
+npm install jwt-decode
+
+### dayjs
+
+npm i dayjs
