@@ -12,7 +12,7 @@ export default function navbar() {
       </Link>
 
       <div className="flex gap-5">
-        <Link to="/boards " className="font-mono">
+        <Link to="/boards" className="font-mono">
           Square
         </Link>
         <Link to="/mypage" className="font-mono">
