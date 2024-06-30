@@ -49,7 +49,7 @@ export default function Navbar() {
           Q&A
         </Link>
         <div className=" border-l-2 border-l-gray-600  w-1"></div>
-        <Link to="/boards" className="font-mono">
+        <Link to="/devpage" className="font-mono">
           Dev
         </Link>
       </div>
