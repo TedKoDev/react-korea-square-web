@@ -4,6 +4,19 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from './input'
 import Button from './button'
+import { login } from '../services/authAPI'
+import useUserStore from '../stores/user-store'
+import { jwtDecode } from 'jwt-decode'
+
+// Define the JWT payload interface
+export interface JwtPayload {
+  id: number
+  email: string
+  username: string
+  role: string
+  iat?: number
+  exp?: number
+}
 
 const schema = z.object({
   email: z.string().email('Invalid email address'),
@@ -19,10 +32,31 @@ const LoginForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   })
 
-  const onSubmit = (data: FormData) => {
-    console.log(data)
+  const onSubmit = async (data: FormData) => {
+    try {
+      const result = await login({
+        email: data.email,
+        password: data.password,
+      })
+      console.log(result) // 비동기 함수의 결과를 처리
+
+      const token = result.data.access_token // 토큰을 추출
+      localStorage.setItem('token', token) // 토큰을 로컬 스토리지에 저장
+
+      const decoded = jwtDecode<JwtPayload>(token) // 토큰을 디코딩
+      const { id, email, username, role } = decoded
+
+      useUserStore.getState().setUser({ id, email, username, role })
+      window.location.href = '/' // or use your routing library's navigation
+    } catch (error) {
+      console.error('Login failed:', error)
+    }
   }
 
   return (
@@ -31,7 +65,7 @@ const LoginForm: React.FC = () => {
         name="email"
         control={control}
         label=""
-        rules={{ required: 'Email is required' }}
+        rules={{ required: 'Email is requiredd' }}
         placeholder="email"
         width="100%"
       />

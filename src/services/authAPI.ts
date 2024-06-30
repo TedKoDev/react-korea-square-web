@@ -2,11 +2,8 @@ import { api } from './api-service'
 import useUserStore from '../stores/user-store'
 
 export interface AuthResponse {
-  token: string
-  user: {
-    id: number
-    name: string
-    email: string
+  data: {
+    access_token: string
   }
 }
 
@@ -16,7 +13,7 @@ export interface LoginData {
 }
 
 export interface SignupData {
-  name: string
+  username: string
   email: string
   password: string
 }
@@ -33,6 +30,7 @@ export const login = async (data: LoginData): Promise<AuthResponse> => {
 
 // 회원가입 API
 export const signup = async (data: SignupData): Promise<AuthResponse> => {
+  console.log('data', data)
   const response = await api('/auth')({
     method: 'POST',
     path: '/signup',

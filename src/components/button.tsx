@@ -6,7 +6,7 @@ interface ButtonProps {
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
-  variant?: 'primary' | 'secondary' | 'danger'
+  variant?: 'primary' | 'secondary' | 'danger' | 'none'
   to?: string // 네비게이션을 위한 prop 추가
   width?: string // 가로 길이를 제어하기 위한 prop 추가
   height?: string // 높이를 제어하기 위한 prop 추가
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   type = 'button',
   disabled = false,
-  variant = 'primary',
+  variant = 'none',
   to,
   width = 'auto', // 기본값을 'auto'로 설정
   height = 'auto', // 기본값을 'auto'로 설정
@@ -35,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
     secondary:
       'bg-gray-500 hover:bg-gray-700 active:scale-95 text-black font-bold',
     danger: 'bg-red-500 hover:bg-red-700 active:scale-95 text-black font-bold',
+    none: 'active:scale-95',
   }
 
   const classNames = `${baseStyles} ${variantStyles[variant]} ${

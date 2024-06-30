@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import GrayLine from '../components/grayline'
 import LoginForm from '../components/loginform'
@@ -6,7 +6,7 @@ import SignupForm from '../components/signupform'
 
 const Auth: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true)
-
+  const nodeRef = useRef(null)
   return (
     <div className="flex flex-col w-full h-full items-center">
       <div className="font-bold mb-5 animate-bounce mt-10">Welcome</div>
@@ -32,12 +32,12 @@ const Auth: React.FC = () => {
       <SwitchTransition>
         <CSSTransition
           key={isLogin ? 'login' : 'signup'}
-          addEndListener={(node, done) =>
-            node.addEventListener('transitionend', done, false)
-          }
+          nodeRef={nodeRef}
+          timeout={300}
           classNames="fade"
+          unmountOnExit
         >
-          <div className="w-full sm:w-1/2">
+          <div className="w-full sm:w-1/2" ref={nodeRef}>
             {isLogin ? <LoginForm /> : <SignupForm />}
           </div>
         </CSSTransition>

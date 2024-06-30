@@ -27,6 +27,6 @@ export const useSignup = () => {
 
 // 인증 상태 확인 훅
 export const useCheckAuth = () => {
-  const query = useQuery<AuthResponse, AxiosError>('checkAuth', checkAuth)
+  const query = useQuery<AuthResponse, AxiosError>(['checkAuth'], checkAuth)
   return query
 }

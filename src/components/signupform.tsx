@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from './input'
-import Button from './button'
+import { signup } from '../services/authAPI'
 
 const schema = z
   .object({
@@ -28,10 +28,32 @@ const SignupForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
   })
 
-  const onSubmit = (data: FormData) => {
-    console.log(data)
+  const onSubmit = async (data: FormData) => {
+    try {
+      const result = await signup({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      })
+      if (result) {
+        const confirmed = window.confirm(
+          '회원가입이 완료되었습니다. 로그인을 진행해 주세요'
+        )
+        if (confirmed) {
+          window.location.reload() // 페이지 새로고침
+        }
+      }
+    } catch (error) {
+      console.error('Signup failed:', error)
+    }
   }
 
   return (
@@ -39,34 +61,30 @@ const SignupForm: React.FC = () => {
       <Input
         name="username"
         control={control}
-        label=""
-        rules={{ required: 'Username is required' }}
+        label="Username"
         placeholder="Username"
         width="100%"
       />
       <Input
         name="email"
         control={control}
-        label=""
-        rules={{ required: 'Email is required' }}
+        label="Email"
         placeholder="Email"
         width="100%"
       />
       <Input
         name="password"
         control={control}
-        label=""
+        label="Password"
         type="password"
-        rules={{ required: 'Password is required' }}
         placeholder="Password"
         width="100%"
       />
       <Input
         name="confirmPassword"
         control={control}
-        label=""
+        label="Confirm Password"
         type="password"
-        rules={{ required: 'Confirm Password is required' }}
         placeholder="Confirm Password"
         width="100%"
       />

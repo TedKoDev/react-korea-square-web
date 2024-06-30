@@ -1,27 +1,40 @@
-import { Link } from 'react-router-dom'
-import { GiBookshelf } from 'react-icons/gi'
-
+import { Link, useNavigate } from 'react-router-dom'
 import Button from './button'
+import useUserStore from '../stores/user-store'
 
-export default function navbar() {
+export default function Navbar() {
+  const { isAuthenticated, clearUser } = useUserStore()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    clearUser()
+    navigate('/')
+  }
+
   return (
-    <header className="flex py-2 justify-evenly bg-gray-100  border-gray-300 border-b-2 *:align-middle *:items-center">
-      <Link to="/" className="flex  gap-2">
-        <GiBookshelf />
-        <h1>Korea-Square</h1>
-      </Link>
+    <header className="flex flex-col items-center w-full border-b border-gray-300">
+      <div className="flex justify-end gap-3 px-20 w-full border-gray-300 border-b">
+        {isAuthenticated ? (
+          <Button to="/mypage" variant="primary" className="my-1 py-0">
+            My page
+          </Button>
+        ) : (
+          <Button to="/auth" variant="primary">
+            로그인
+          </Button>
+        )}
+        <Link to="/devpage">Dev</Link>
+      </div>
+      <div className="flex justify-center items-end w-full p-4">
+        <span className="text-4xl font-black">Korea Square</span>
+        <div className="text-xs bg-yellow-300 ml-2 items-end">βeta</div>
+      </div>
 
-      <div className="flex gap-5">
+      <div className="flex justify-center bg-green-500  w-full  md:w-2/3">
         <Link to="/boards" className="font-mono">
           Square
         </Link>
-        <Link to="/mypage" className="font-mono">
-          My page
-        </Link>
-      </div>
-      <div className="flex gap-3">
-        <Button to="/auth">로그인</Button>
-        <Link to="/devpage">Dev</Link>
       </div>
     </header>
   )
