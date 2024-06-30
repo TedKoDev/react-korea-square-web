@@ -1,124 +1,43 @@
 import React, { useState } from 'react'
 import Button from '../components/button'
+import infosection from '../sections/mypage/info-section'
+import postssection from '../sections/mypage/posts-section'
+import commentsection from '../sections/mypage/comment-section'
+import likedsection from '../sections/mypage/liked-section'
+import likedcommentsection from '../sections/mypage/liked-comment-section'
+import scrappedpostsection from '../sections/mypage/scrapped-post-section'
+import BlockedUsersSection from '../sections/mypage/blocked-users-section'
 
 export default function Mypage() {
   const [selectedSection, setSelectedSection] = useState('회원 정보 변경')
 
+  const sections = [
+    { name: '회원 정보 변경', component: infosection },
+    { name: '내가 쓴 글', component: postssection },
+    { name: '내가 쓴 댓글', component: commentsection },
+    { name: '좋아요 한 글', component: likedsection },
+    { name: '좋아요 한 댓글', component: likedcommentsection },
+    { name: '스크랩 한 글', component: scrappedpostsection },
+    { name: '차단한 사용자', component: BlockedUsersSection },
+  ]
+
   const renderContent = () => {
-    switch (selectedSection) {
-      case '회원 정보 변경':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">회원 정보 변경</h2>
-            <div className="flex items-center mb-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full mr-4"></div>
-              <p className="text-sm">포인트: 0</p>
-            </div>
-            <div className="space-y-2">
-              <div className="bg-gray-100 p-2 rounded-lg">
-                ghdxodml@naver.com
-              </div>
-              <div className="bg-gray-100 p-2 rounded-lg">TaiKoDev</div>
-              <button className="bg-gray-200 border border-gray-300 px-4 py-2 rounded-lg">
-                정보 수정
-              </button>
-            </div>
-          </div>
-        )
-      case '내가 쓴 글':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">내가 쓴 글</h2>
-            <p>Here is the content for 내가 쓴 글.</p>
-          </div>
-        )
-      case '내가 쓴 댓글':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">내가 쓴 댓글</h2>
-            <p>Here is the content for 내가 쓴 댓글.</p>
-          </div>
-        )
-      case '좋아요 한 글':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">좋아요 한 글</h2>
-            <p>Here is the content for 좋아요 한 글.</p>
-          </div>
-        )
-      case '좋아요 한 댓글':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">좋아요 한 댓글</h2>
-            <p>Here is the content for 좋아요 한 댓글.</p>
-          </div>
-        )
-      case '스크랩 한 글':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">스크랩 한 글</h2>
-            <p>Here is the content for 스크랩 한 글.</p>
-          </div>
-        )
-      case '차단한 사용자':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">차단한 사용자</h2>
-            <p>Here is the content for 차단한 사용자.</p>
-          </div>
-        )
-      default:
-        return null
-    }
+    const section = sections.find((section) => section.name === selectedSection)
+    return section ? section.component() : null
   }
 
   return (
     <div className="max-w-2xl mx-auto font-sans">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-        <Button
-          onClick={() => setSelectedSection('회원 정보 변경')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          회원 정보 변경
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('내가 쓴 글')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          내가 쓴 글
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('내가 쓴 댓글')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          내가 쓴 댓글
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('좋아요 한 글')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          좋아요 한 글
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('좋아요 한 댓글')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          좋아요 한 댓글
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('스크랩 한 글')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100"
-        >
-          스크랩 한 글
-        </Button>
-        <Button
-          onClick={() => setSelectedSection('차단한 사용자')}
-          className="rounded-none bg-white border border-gray-300 px-4 py-2 m-1 text-xs sm:text-sm hover:bg-gray-100
-          
-          "
-        >
-          차단한 사용자
-        </Button>
+      <div className="grid grid-cols-2 sm:grid-cols-4 mb-4">
+        {sections.map((section) => (
+          <Button
+            key={section.name}
+            onClick={() => setSelectedSection(section.name)}
+            className="rounded-none bg-white border border-gray-300 px-4 m-1 text-xs md:text-sm hover:bg-gray-100"
+          >
+            {section.name}
+          </Button>
+        ))}
       </div>
       {renderContent()}
     </div>

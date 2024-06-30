@@ -26,14 +26,31 @@ export default function Navbar() {
         )}
         <Link to="/devpage">Dev</Link>
       </div>
-      <div className="flex justify-center items-end w-full p-4">
+      <Link to="/" className="flex justify-center items-end w-full p-4">
         <span className="text-4xl font-black">Korea Square</span>
         <div className="text-xs bg-yellow-300 ml-2 items-end">βeta</div>
-      </div>
+      </Link>
 
-      <div className="flex justify-center bg-green-500  w-full  md:w-2/3">
+      <div className="flex justify-center bg-green-500 gap-3 w-full  md:w-2/3">
+        <Link to="/boards" className="font-mono ">
+          Community
+        </Link>
+
+        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        <Link to="/boards" className="font-mono ">
+          Study
+        </Link>
+        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        <Link to="/boards" className="font-mono ">
+          Game
+        </Link>
+        <div className=" border-l-2 border-l-gray-600  w-1"></div>
         <Link to="/boards" className="font-mono">
-          Square
+          Q&A
+        </Link>
+        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        <Link to="/boards" className="font-mono">
+          Dev
         </Link>
       </div>
     </header>
