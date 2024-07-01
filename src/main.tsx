@@ -9,9 +9,10 @@ import Home from './pages/home'
 import Boards from './pages/boards'
 import Devpage from './pages/devpage'
 import Mypage from './pages/mypage'
-import NewProduct from './pages/newpost'
+import Newpost from './sections/boards/newpost'
 import ProductDetail from './pages/postdetail'
 import Auth from './pages/auth'
+import Study from './pages/study'
 
 // Create a client
 const queryClient = new QueryClient()
@@ -24,10 +25,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'auth', element: <Auth /> },
+      { path: 'study', element: <Study /> },
+
       { path: 'boards', element: <Boards /> },
       {
         path: '/boards/new',
-        element: <NewProduct />,
+        element: <Newpost />,
       },
       {
         path: '/boards/:id',

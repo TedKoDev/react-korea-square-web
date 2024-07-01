@@ -14,17 +14,23 @@ export default function Navbar() {
 
   return (
     <header className="flex flex-col items-center w-full border-b border-gray-300">
-      <div className="flex justify-end gap-3 px-20 w-full border-gray-300 border-b">
+      <div className="flex justify-end gap-3 px-20 w-full border-gray-300 border-b ">
         {isAuthenticated ? (
-          <Button to="/mypage" variant="primary" className="my-1 py-0">
+          <Button to="/mypage" variant="primary" className="my-1">
             My page
           </Button>
         ) : (
-          <Button to="/auth" variant="primary">
+          <Button to="/auth" variant="primary" className="my-1">
             로그인
           </Button>
         )}
-        <Link to="/devpage">Dev</Link>
+        <div className="flex ">
+          {isAuthenticated && (
+            <Button onClick={handleLogout} variant="danger" className="my-1">
+              로그아웃
+            </Button>
+          )}
+        </div>
       </div>
       <Link to="/" className="flex justify-center items-end w-full p-4">
         <span className="text-4xl font-black">Korea Square</span>
@@ -32,13 +38,12 @@ export default function Navbar() {
       </Link>
 
       <div className="flex justify-center bg-green-500 gap-3 w-full  md:w-2/3">
-        <Link to="/boards" className="font-mono ">
-          Community
+        <Link to="/study" className="font-mono ">
+          Study
         </Link>
-
         <div className=" border-l-2 border-l-gray-600  w-1"></div>
         <Link to="/boards" className="font-mono ">
-          Study
+          Community
         </Link>
         <div className=" border-l-2 border-l-gray-600  w-1"></div>
         <Link to="/boards" className="font-mono ">

@@ -41,7 +41,7 @@ export const signup = async (data: SignupData): Promise<AuthResponse> => {
 
 // 인증 상태 확인 API
 export const checkAuth = async (): Promise<AuthResponse> => {
-  const response = await api('/v1/auth')({
+  const response = await api('/auth')({
     method: 'GET',
     path: '/me',
   })
