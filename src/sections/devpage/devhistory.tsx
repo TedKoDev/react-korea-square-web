@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { devhistoryData } from '../../devhistory'
+import { devhistoryData } from '../../demoData/devhistory'
 
 export default function DevHistory() {
   const [selectedCategory, setSelectedCategory] = useState('ALL')

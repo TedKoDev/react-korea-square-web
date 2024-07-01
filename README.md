@@ -33,3 +33,17 @@ npm install jwt-decode
 ### dayjs
 
 npm i dayjs
+
+## recat-quill
+
+npm install react-quill --save
+
+npm install quill-image-resize-module-ts
+
+## react-toastify
+
+npm install --save react-toastify
+
+## AWS S3
+
+npm install aws-sdk

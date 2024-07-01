@@ -18,3 +18,10 @@
 .fade-exit-active {
     @apply opacity-0 transform scale-90 transition duration-300 ease-in-out;
 }
+
+
+/* Quill.css */
+.ql-align-center img {
+    display: block;
+    margin: 0 auto;
+}

@@ -21,6 +21,9 @@ function createApiClient(baseURL: string) {
           ...config.headers,
           Authorization: `Bearer ${token}`,
         }
+        console.log('JWT Token added to headers:', token) // 디버깅용 로그 추가
+      } else {
+        console.log('No token found') // 디버깅용 로그 추가
       }
       return config
     }

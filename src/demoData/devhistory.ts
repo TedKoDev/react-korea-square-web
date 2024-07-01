@@ -43,4 +43,16 @@ export const devhistoryData = [
     worker: 'Owner',
     category: 'B.E',
   },
+  {
+    date: '2024-07-01',
+    task: 'Add Post ',
+    worker: 'Owner',
+    category: 'F.E',
+  },
+  {
+    date: '2024-07-01',
+    task: 'Jwt middleware for Auth Controller and Service addpost API AWS S3 SETTING ',
+    worker: 'Owner',
+    category: 'B.E',
+  },
 ]
