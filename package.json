@@ -15,7 +15,7 @@
     "@types/react-transition-group": "^4.4.10",
     "@xeger/quill-image-actions": "^0.7.2",
     "@xeger/quill-image-formats": "^0.7.2",
-    "aws-sdk": "^2.1651.0",
+   
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
     "firebase": "^10.12.2",
@@ -48,5 +48,7 @@
     "tailwindcss": "^3.4.4",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
-  }
+  },
+  "proxy": "http://localhost:4000"
+
 }

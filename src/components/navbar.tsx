@@ -37,23 +37,23 @@ export default function Navbar() {
         <div className="text-xs bg-yellow-300 ml-2 items-end">βeta</div>
       </Link>
 
-      <div className="flex justify-center bg-green-500 gap-3 w-full  md:w-2/3">
+      <div className="flex  items-center justify-center bg-green-500 gap-5 md:gap-10 w-full  h-9  text-center align-middle  md:w-2/3">
         <Link to="/study" className="font-mono ">
           Study
         </Link>
-        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        {/* <div className=" border-l-2 border-l-gray-600 h-full w-1"></div> */}
         <Link to="/boards" className="font-mono ">
           Community
         </Link>
-        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        {/* <div className=" border-l-2 border-l-gray-600 h-full w-1"></div> */}
         <Link to="/boards" className="font-mono ">
           Game
         </Link>
-        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        {/* <div className=" border-l-2 border-l-gray-600 h-full w-1"></div> */}
         <Link to="/boards" className="font-mono">
           Q&A
         </Link>
-        <div className=" border-l-2 border-l-gray-600  w-1"></div>
+        {/* <div className=" border-l-2 border-l-gray-600 h-full w-1"></div> */}
         <Link to="/devpage" className="font-mono">
           Dev
         </Link>

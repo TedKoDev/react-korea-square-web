@@ -4,9 +4,9 @@ import { getAnalytics } from 'firebase/analytics'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
+  apiKey: import.meta.env.REACT_APP_API_KEY,
+  authDomain: import.meta.env.REACT_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.REACT_APP_PROJECT_ID,
   //   databaseURL: 'https://korea-square-default-rtdb.firebaseio.com',
 }
 
